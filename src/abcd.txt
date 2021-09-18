@@ -1,0 +1,45 @@
+  const [news,setnews]=useState([]);
+  const website= process.env.REACT_APP_WEBSITE;
+  const key= process.env.REACT_APP_KEY;
+  const host= process.env.REACT_APP_HOST;
+ 
+
+useEffect(()=>{fetch(website, {
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-key": key,
+    "x-rapidapi-host": host
+  }
+})
+.then(response=>response.json()).then(data=>{
+ setnews(data.value);
+})
+.catch(err => {
+  console.error(err);
+});
+},[])
+
+<div className="News">
+          {news.length >0 && news.map((news)=> <News key={news.id}{...news}/>)}
+</div>
+     
+
+
+
+
+
+
+     fetch("https://bing-news-search1.p.rapidapi.com/news/search?q=sports&safeSearch=Off&textFormat=Raw&freshness=Day", {
+	"method": "GET",
+	"headers": {
+		"x-bingapis-sdk": "true",
+		"x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
+		"x-rapidapi-key": "eb4a3fbcbemshbfcd4235fb90c30p13b125jsn1ceb3600b146"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});

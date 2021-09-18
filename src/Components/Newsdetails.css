@@ -1,0 +1,30 @@
+
+.Details{
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.Totaldetail{
+    position: relative;
+    background-color: chocolate;
+}
+.close{
+    bottom: 0;
+    background-color: rgb(202, 29, 202);
+    border: darkturquoise;
+    color: purple;
+}
+.close:hover{
+    background-color: dimgrey;
+}
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    max-width: 60%;
+    display: flex;
+    justify-content: center;
+}
