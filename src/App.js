@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar';
 import backgroundnews from  './Components/Videos/backgroundnews.mp4';
 import Finance from './Components/Finance';
 function App() {
+  console.log(backgroundnews);
   return (
       <Router>
         <div className="App">
