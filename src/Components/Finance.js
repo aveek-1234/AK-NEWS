@@ -32,7 +32,7 @@ function Finance() {
         <div>
         <h1>Finance</h1>    
        <div className="News">
-          {Load?(<Loading />): (Finance.length >0 && Finance.map((Finance)=> <Finance1 key={Finance.id}{...Finance}/>))}
+          {Load?(Finance.length >0 && Finance.map((Finance)=> <Finance1 key={Finance.id}{...Finance}/>)): (<Loading />)}
        </div>
         </div>
     )
