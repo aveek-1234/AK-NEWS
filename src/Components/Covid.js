@@ -32,7 +32,7 @@ function Covid() {
         <div>
         <h1>Covid</h1>    
        <div className="News">
-          {Load?(<Loading />):(Covid.length >0 && Covid.map((Covid)=> <Covid1 key={Covid.id}{...Covid}/>))}
+          {Load?(Covid.length >0 && Covid.map((Covid)=> <Covid1 key={Covid.id}{...Covid}/>)):(<Loading />)}
        </div>
         </div>
     )
