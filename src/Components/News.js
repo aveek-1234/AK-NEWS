@@ -42,7 +42,7 @@ useEffect(async()=>{
       
       <h1>Breaking News</h1>
        <div className="News">
-          {load?(<Loading />):(news.length >0 && news.map((news)=> <News1 key={news.id}{...news}/>))}
+          {load?(news.length >0 && news.map((news)=> <News1 key={news.id}{...news}/>)):(<Loading />)}
        </div>
     </>
   );
