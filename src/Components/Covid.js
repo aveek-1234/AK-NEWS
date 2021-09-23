@@ -5,15 +5,18 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import './Sports.css';
+import Loading from './Loading'; 
 
 function Covid() {
     const [Covid,setCovid] = useState([]);
+    const [Load,setLoad] = useState(false);
     const website= process.env.REACT_APP_COVID;
     const key= process.env.REACT_APP_KEY;
     const host= process.env.REACT_APP_SPORTS_HOST;
     const sdk= process.env.REACT_APP_SPORTS_SDK;
 
-    useEffect(()=>{fetch(website, {
+    useEffect(()=>{
+         let response = await fetch(website, {
         "method": "GET",
         "headers": {
           "x-bingapis-sdk": sdk,
@@ -21,14 +24,9 @@ function Covid() {
           "x-rapidapi-host": host,
         }
       })
-      .then(response=>response.json()).then(data=>{
-       
-       setCovid(data.value);
-      }
-      )
-      .catch(err => {
-        console.error(err);
-      });
+      setLoad(true);
+      let data= await response.json();
+      setCovid(data.value)
       },[])
     return (
         <div>
