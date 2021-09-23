@@ -26,7 +26,7 @@ function Finance() {
       })
       setLoad(true);
       let data= await response.json();
-      setFinance(data);
+      setFinance(data.values);
       },[])
     return (
         <div>
