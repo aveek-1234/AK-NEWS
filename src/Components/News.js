@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Newsdetails from './Newsdetails';
-
+import Loading from './Loading';
 
 export default function News() {
  
@@ -42,7 +42,7 @@ useEffect(()=>{fetch(website, {
       
       <h1>Breaking News</h1>
        <div className="News">
-          {news.length >0 && news.map((news)=> <News1 key={news.id}{...news}/>)}
+          {load?(<Loading />):(news.length >0 && news.map((news)=> <News1 key={news.id}{...news}/>))}
        </div>
     </>
   );
