@@ -12,12 +12,14 @@ import Loading from './Loading';
 
 function Sports() {
     const [sports,setsports] = useState([]);
+    const [Load, setLoad] = useState(false);
     const website= process.env.REACT_APP_SPORTS;
     const key= process.env.REACT_APP_KEY;
     const host= process.env.REACT_APP_SPORTS_HOST;
     const sdk= process.env.REACT_APP_SPORTS_SDK;
 
-    useEffect(()=>{fetch(website, {
+    useEffect(async()=>{
+      let response = await fetch(website, {
         "method": "GET",
         "headers": {
           "x-bingapis-sdk": sdk,
@@ -25,19 +27,15 @@ function Sports() {
           "x-rapidapi-host": host,
         }
       })
-      .then(response=>response.json()).then(data=>{
-       setsports(data.value);
-      }
-      )
-      .catch(err => {
-        console.error(err);
-      });
+      setLoad(true);
+        let data = await response.json();
+        setsports(data);
       },[])
     return (
         <div>
         <h1>Sports</h1>    
        <div className="News">
-          {sports.length >0 && sports.map((sports)=> <Sports1 key={sports.id}{...sports}/>)}
+          {Load?(<Loading />):(sports.length >0 && sports.map((sports)=> <Sports1 key={sports.id}{...sports}/>))}
        </div>
         </div>
     )
