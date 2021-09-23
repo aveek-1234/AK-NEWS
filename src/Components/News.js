@@ -30,7 +30,7 @@ useEffect(async()=>{
         "x-rapidapi-host": host,
       }
     })
-    setload(true);
+    setLoad(true);
     let data= await response.json();
     setnews(data.value);
 }
