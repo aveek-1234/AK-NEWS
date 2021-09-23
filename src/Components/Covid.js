@@ -15,7 +15,7 @@ function Covid() {
     const host= process.env.REACT_APP_SPORTS_HOST;
     const sdk= process.env.REACT_APP_SPORTS_SDK;
 
-    useEffect(()=>{
+    useEffect(async()=>{
          let response = await fetch(website, {
         "method": "GET",
         "headers": {
