@@ -16,25 +16,25 @@ import Loading from './Loading';
 export default function News() {
  
  const [news,setnews]=useState([]);
+ const [load, setLoad]= useState(false);
   const website= process.env.REACT_APP_WEBSITE;
   const key= process.env.REACT_APP_KEY;
   const host= process.env.REACT_APP_HOST;
 
-useEffect(()=>{fetch(website, {
-  "method": "GET",
-  "headers": {
-    "x-rapidapi-key": key,
-    "x-rapidapi-host": host,
-  }
-})
-.then(response=>response.json()).then(data=>{
- setnews(data.value);
+useEffect(async()=>{
+   
+    let response= await fetch(website, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": key,
+        "x-rapidapi-host": host,
+      }
+    })
+    setload(true);
+    let data= await response.json();
+    setnews(data.value);
 }
-)
-.catch(err => {
-  console.error(err);
-});
-},[])
+,[])
  
 
   return (
