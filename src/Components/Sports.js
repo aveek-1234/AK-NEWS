@@ -35,7 +35,7 @@ function Sports() {
         <div>
         <h1>Sports</h1>    
        <div className="News">
-          {Load?(<Loading />):(sports.length >0 && sports.map((sports)=> <Sports1 key={sports.id}{...sports}/>))}
+          {Load?(sports.length >0 && sports.map((sports)=> <Sports1 key={sports.id}{...sports}/>)):(<Loading />)}
        </div>
         </div>
     )
