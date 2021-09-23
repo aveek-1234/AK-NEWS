@@ -29,7 +29,7 @@ function Sports() {
       })
       setLoad(true);
         let data = await response.json();
-        setsports(data);
+        setsports(data.value);
       },[])
     return (
         <div>
