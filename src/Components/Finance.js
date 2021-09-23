@@ -5,15 +5,18 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import './Sports.css';
+import Loading from './Loading'; 
 
 function Finance() {
     const [Finance,setFinance] = useState([]);
+    const [Load, setLoad] = useState(false);
     const website= process.env.REACT_APP_FINANCE;
     const key= process.env.REACT_APP_KEY;
     const host= process.env.REACT_APP_SPORTS_HOST;
     const sdk= process.env.REACT_APP_SPORTS_SDK;
 
-    useEffect(()=>{fetch(website, {
+    useEffect(async()=>{
+          let response = await fetch(website, {
         "method": "GET",
         "headers": {
           "x-bingapis-sdk": sdk,
@@ -21,20 +24,15 @@ function Finance() {
           "x-rapidapi-host": host,
         }
       })
-      .then(response=>response.json()).then(data=>{
-       
-       setFinance(data.value);
-      }
-      )
-      .catch(err => {
-        console.error(err);
-      });
+      setLoad(true);
+      let data= await response.json();
+      setFinance(data);
       },[])
     return (
         <div>
         <h1>Finance</h1>    
        <div className="News">
-          {Finance.length >0 && Finance.map((Finance)=> <Finance1 key={Finance.id}{...Finance}/>)}
+          {Load?(<Loading />): (Finance.length >0 && Finance.map((Finance)=> <Finance1 key={Finance.id}{...Finance}/>))}
        </div>
         </div>
     )
